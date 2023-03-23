@@ -13,28 +13,24 @@ da deve ser escrita na saída padrão.
 */
 
 #include <iostream>
-#include <cmath>
 using namespace std;
- 
-int main()
-{
-    int l = 0, c = 0, r1 = 0, r2 = 0, maior = 0;
-    char saida = 'N';
-    cin >>l>>c>>r1 >>r2;
-    if((l+c+r1+r2) == 0)
-        return 0;
-    if(r1 > r2)
-        maior = r1+r1;
-    else
-        maior = r2+r2;
-    if(maior <= l && maior <= c)
-    {
-        if(sqrt(pow((l - r2 - r1),2)+pow((c - r2 - r1),2)) >=  r1 + r2)
-        {
-            saida = 'S';
+int main(){
+    char c;
+    int i,N,d;
+    char direcoes[4] = {'N', 'L', 'S', 'O'};
+    while(cin >> N){
+        if(!N)  
+            break;
+        d=0;
+        for(i=0;i<N;++i){
+            cin>>c;
+            if(c=='D')
+                d+=1;
+            else
+                d-=1;
+            d=(d+4)%4;
         }
+        cout<<direcoes[d]<<endl;
     }
-    cout << saida << endl;
-    main();
     return 0;
 }
