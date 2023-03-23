@@ -10,25 +10,30 @@ O último caso de teste é seguido por uma linha que contém quatro zeros separa
 Saída
 Para cada caso de teste, o seu programa deve imprimir uma única linha com um único caractere: ‘S’ se for possível colocar os dois cilindros no elevador e ‘N’ caso contrário.
 */
-
-#include <stdio.h>
+#include <iostream>
+#include <cmath>
+using namespace std;
+ 
 int main()
 {
-    int a,b,c,d=0,e=1;
-    scanf("%d", &a);
-    int ara[a];
-    for(b=0; b<a; b++)
-        scanf("%d", &ara[b]);
-    c=ara[d];
-    for(d=0; d<a; d++)
+    int l = 0, c = 0, r1 = 0, r2 = 0, maior = 0;
+    char saida = 'N';
+    cin >>l>>c>>r1 >>r2;
+    if((l+c+r1+r2) == 0)
+        return 0;
+    if(r1 > r2)
+        maior = r1+r1;
+    else
+        maior = r2+r2;
+    if(maior <= l && maior <= c)
     {
-        if(ara[d]<c)
+        if(sqrt(pow((l - r2 - r1),2)+pow((c - r2 - r1),2)) >=  r1 + r2)
         {
-            c=ara[d];
-            e=d+1;
+            saida = 'S';
         }
-
     }
-    printf("%d\n", e);
+    cout << saida << endl;
+    main();
     return 0;
 }
+
